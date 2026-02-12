@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
     
     // Profile & Tasks
     Route::get('/profile', [UserController::class, 'profile']);
+    Route::put('/profile', [AuthController::class, 'updateProfile']);
     Route::get('/my-tasks', [TaskController::class, 'myTasks']);
     Route::patch('/tasks/{id}/status', [TaskController::class, 'updateStatus']);
 });

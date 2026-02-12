@@ -13,7 +13,13 @@
 					"name": "Ping Test",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/ping",
 							"host": ["{{base_url}}"],
@@ -44,7 +50,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -81,7 +93,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -118,7 +136,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -153,7 +177,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/logout",
 							"host": ["{{base_url}}"],
@@ -177,7 +207,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/profile",
 							"host": ["{{base_url}}"],
@@ -206,7 +242,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/my-tasks",
 							"host": ["{{base_url}}"],
@@ -233,7 +275,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -268,7 +316,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/users",
 							"host": ["{{base_url}}"],
@@ -295,7 +349,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -325,7 +385,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/users/1",
 							"host": ["{{base_url}}"],
@@ -352,7 +418,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -382,7 +454,13 @@
 							]
 						},
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/users/2",
 							"host": ["{{base_url}}"],
@@ -406,7 +484,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/users/2/assignments",
 							"host": ["{{base_url}}"],
@@ -435,7 +519,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/tasks",
 							"host": ["{{base_url}}"],
@@ -462,7 +552,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -492,7 +588,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/tasks/1",
 							"host": ["{{base_url}}"],
@@ -519,7 +621,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -549,7 +657,13 @@
 							]
 						},
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/tasks/1",
 							"host": ["{{base_url}}"],
@@ -573,7 +687,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/tasks/1/assignments",
 							"host": ["{{base_url}}"],
@@ -602,7 +722,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/assignments",
 							"host": ["{{base_url}}"],
@@ -629,7 +755,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -659,7 +791,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/assignments/1",
 							"host": ["{{base_url}}"],
@@ -686,7 +824,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -716,7 +860,13 @@
 							]
 						},
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/admin/assignments/1",
 							"host": ["{{base_url}}"],
