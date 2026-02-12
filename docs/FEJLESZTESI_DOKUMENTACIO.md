@@ -1,6 +1,6 @@
 # Task Manager Rendszer - Teljes Fejlesztési Dokumentáció
 
-## 📋 Tartalomjegyzék
+## Tartalomjegyzék
 1. [Projekt Áttekintés](#projekt-áttekintés)
 2. [Technológiai Stack](#technológiai-stack)
 3. [Telepítés és Kezdeti Beállítás](#telepítés-és-kezdeti-beállítás)
@@ -14,7 +14,7 @@
 
 ---
 
-## 🎯 Projekt Áttekintés
+## Projekt Áttekintés
 
 ### Mi ez a projekt?
 Egy komplett feladatkezelő (Task Management) rendszer Laravel 11 alapokon, amely tartalmaz:
@@ -24,16 +24,16 @@ Egy komplett feladatkezelő (Task Management) rendszer Laravel 11 alapokon, amel
 - **Soft delete** funkcionalitást minden táblához
 
 ### Fő funkciók
-- ✅ Felhasználó kezelés (CRUD + soft delete)
-- ✅ Feladat kezelés (CRUD + soft delete, prioritás, státusz)
-- ✅ Feladat hozzárendelések kezelése (CRUD + soft delete)
-- ✅ Token-alapú API authentikáció
-- ✅ Web-alapú admin bejelentkezés
-- ✅ Csak admin felhasználók férhetnek hozzá a webes felülethez
+- Felhasználó kezelés (CRUD + soft delete)
+- Feladat kezelés (CRUD + soft delete, prioritás, státusz)
+- Feladat hozzárendelések kezelése (CRUD + soft delete)
+- Token-alapú API authentikáció
+- Web-alapú admin bejelentkezés
+- Csak admin felhasználók férhetnek hozzá a webes felülethez
 
 ---
 
-## 🛠 Technológiai Stack
+## Technológiai Stack
 
 ### Backend Framework
 - **Laravel 11.x** - PHP keretrendszer
@@ -58,7 +58,7 @@ Egy komplett feladatkezelő (Task Management) rendszer Laravel 11 alapokon, amel
 
 ---
 
-## 📦 Telepítés és Kezdeti Beállítás
+## Telepítés és Kezdeti Beállítás
 
 ### 1. Laravel Projekt Létrehozása
 
@@ -105,7 +105,7 @@ php artisan migrate
 
 ---
 
-## 🗄 Adatbázis Struktúra
+## Adatbázis Struktúra
 
 ### Modellek Létrehozása
 
@@ -267,7 +267,7 @@ php artisan migrate:fresh
 
 ---
 
-## 🔌 API Fejlesztés
+## API Fejlesztés
 
 ### API Controllerek Létrehozása
 
@@ -426,7 +426,7 @@ public function handle(Request $request, Closure $next): Response
 
 ---
 
-## ✅ Tesztelés
+## Tesztelés
 
 ### Teszt Fájlok Létrehozása
 
@@ -439,15 +439,15 @@ php artisan make:test AuthApiTest
 **Fájl:** `tests/Feature/AuthApiTest.php`
 
 **Tesztek (9 db):**
-1. ✅ Sikeres regisztráció
-2. ✅ Sikeres bejelentkezés
-3. ✅ Sikertelen bejelentkezés rossz jelszóval
-4. ✅ Profil megtekintése
-5. ✅ Profil megtekintése authentikáció nélkül (401)
-6. ✅ Profil frissítése
-7. ✅ Profil frissítése érvénytelen adatokkal
-8. ✅ Kijelentkezés
-9. ✅ Token törlődik kijelentkezés után
+1. Sikeres regisztráció
+2. Sikeres bejelentkezés
+3. Sikertelen bejelentkezés rossz jelszóval
+4. Profil megtekintése
+5. Profil megtekintése authentikáció nélkül (401)
+6. Profil frissítése
+7. Profil frissítése érvénytelen adatokkal
+8. Kijelentkezés
+9. Token törlődik kijelentkezés után
 
 #### 2. TaskApiTest - Feladat tesztek
 
@@ -458,16 +458,16 @@ php artisan make:test TaskApiTest
 **Fájl:** `tests/Feature/TaskApiTest.php`
 
 **Tesztek (10 db):**
-1. ✅ Admin listázhatja az összes feladatot
-2. ✅ Normál user listázhatja a feladatokat
-3. ✅ Admin létrehozhat feladatot
-4. ✅ Admin megtekinthet egy feladatot
-5. ✅ Admin frissíthet feladatot
-6. ✅ Admin törölhet feladatot (soft delete)
-7. ✅ Admin visszaállíthat törölt feladatot
-8. ✅ Admin véglegesen törölhet feladatot
-9. ✅ Normál user NEM törölhet véglegesen
-10. ✅ Normál user NEM állíthat vissza feladatot
+1. Admin listázhatja az összes feladatot
+2. Normál user listázhatja a feladatokat
+3. Admin létrehozhat feladatot
+4. Admin megtekinthet egy feladatot
+5. Admin frissíthet feladatot
+6. Admin törölhet feladatot (soft delete)
+7. Admin visszaállíthat törölt feladatot
+8. Admin véglegesen törölhet feladatot
+9. Normál user NEM törölhet véglegesen
+10. Normál user NEM állíthat vissza feladatot
 
 #### 3. UserApiTest - Felhasználó tesztek
 
@@ -478,14 +478,14 @@ php artisan make:test UserApiTest
 **Fájl:** `tests/Feature/UserApiTest.php`
 
 **Tesztek (8 db):**
-1. ✅ Admin listázhatja a felhasználókat
-2. ✅ Normál user NEM listázhatja a felhasználókat
-3. ✅ Admin létrehozhat felhasználót
-4. ✅ Admin megtekinthet felhasználót
-5. ✅ Admin frissíthet felhasználót
-6. ✅ Admin törölhet felhasználót (soft delete)
-7. ✅ Admin visszaállíthat felhasználót
-8. ✅ Admin véglegesen törölhet felhasználót
+1. Admin listázhatja a felhasználókat
+2. Normál user NEM listázhatja a felhasználókat
+3. Admin létrehozhat felhasználót
+4. Admin megtekinthet felhasználót
+5. Admin frissíthet felhasználót
+6. Admin törölhet felhasználót (soft delete)
+7. Admin visszaállíthat felhasználót
+8. Admin véglegesen törölhet felhasználót
 
 ### Tesztek Futtatása
 
@@ -550,7 +550,7 @@ Duration: 0.71s
 
 ---
 
-## 🌐 Web Admin Felület
+## Web Admin Felület
 
 ### Web Controllerek Létrehozása
 
@@ -697,7 +697,7 @@ Route::post('logout', [AuthWebController::class, 'logout'])->name('logout');
 
 ---
 
-## 🔐 Authentikáció és Jogosultságkezelés
+## Authentikáció és Jogosultságkezelés
 
 ### Web Bejelentkezés
 
@@ -785,7 +785,7 @@ User::create([
 
 ---
 
-## 📚 API Dokumentáció
+## API Dokumentáció
 
 ### Base URL
 ```
@@ -1114,7 +1114,7 @@ Ugyanúgy működnek mint a feladatoknál.
 
 ---
 
-## 🚀 Használati Útmutató
+## Használati Útmutató
 
 ### Fejlesztői Környezet Indítása
 
@@ -1245,7 +1245,7 @@ php artisan view:clear
 
 ---
 
-## 📊 Összefoglaló Statisztikák
+## Összefoglaló Statisztikák
 
 ### Létrehozott Fájlok Száma
 - **Modellek:** 3 (User, Task, Task_assigment)
@@ -1277,7 +1277,7 @@ php artisan view:clear
 
 ---
 
-## 🔧 Függőségek és Verziók
+## Függőségek és Verziók
 
 ### Composer Csomagok
 ```json
@@ -1304,7 +1304,7 @@ php artisan view:clear
 
 ---
 
-## 🐛 Ismert Problémák és Megoldások
+## Ismert Problémák és Megoldások
 
 ### 1. Middleware "admin" not found
 **Probléma:** Az admin middleware nincs regisztrálva.
@@ -1341,7 +1341,7 @@ Task::withTrashed()->find($id);
 
 ---
 
-## 📝 Következő Lépések és Fejlesztési Lehetőségek
+## Következő Lépések és Fejlesztési Lehetőségek
 
 ### 1. Hiányzó Funkciók
 - [ ] Email értesítések (Mail)
@@ -1384,7 +1384,7 @@ Task::withTrashed()->find($id);
 
 ---
 
-## 👨‍💻 Készítette
+## Készítette
 
 **Projekt:** Task Manager API + Admin Web Interface  
 **Dátum:** 2026. február 12.  
@@ -1393,7 +1393,7 @@ Task::withTrashed()->find($id);
 
 ---
 
-## 📞 Támogatás és Hibajelentés
+## Támogatás és Hibajelentés
 
 Ha bármilyen problémába ütközöl vagy kérdésed van:
 
@@ -1420,4 +1420,4 @@ php artisan migrate:fresh --seed
 
 ---
 
-**🎉 Gratulálunk! Sikeres Task Manager rendszert építettél Laravel-lel! 🎉**
+**Gratulálunk! Sikeres Task Manager rendszert építettél Laravel-lel!**
