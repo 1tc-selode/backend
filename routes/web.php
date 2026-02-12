@@ -17,7 +17,7 @@ Route::post('login', [AuthWebController::class, 'login'])->name('login.post');
 Route::post('logout', [AuthWebController::class, 'logout'])->name('logout');
 
 // Admin Web Routes - Protected by auth and admin check
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'web'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
     
     // Users Management
     Route::resource('users', UserWebController::class);
