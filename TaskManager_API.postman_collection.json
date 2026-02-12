@@ -1,0 +1,744 @@
+{
+	"info": {
+		"_postman_id": "task-manager-api-collection",
+		"name": "Task Manager API",
+		"description": "Complete API collection for Task Manager with Laravel Sanctum authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "Ping Test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ping",
+							"host": ["{{base_url}}"],
+							"path": ["api", "ping"]
+						},
+						"description": "Test endpoint to check if API is running"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"auth_token\", jsonData.access_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\",\n    \"department\": \"IT\",\n    \"phone\": \"+36 1 234 5678\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": ["{{base_url}}"],
+							"path": ["api", "register"]
+						},
+						"description": "Register a new user account"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"auth_token\", jsonData.access_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@taskmanager.hu\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "login"]
+						},
+						"description": "Login with email and password. Admin: admin@taskmanager.hu / admin123"
+					},
+					"response": []
+				},
+				{
+					"name": "Login as Regular User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"auth_token\", jsonData.access_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"Jelszo12\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "login"]
+						},
+						"description": "Login as regular user (password: Jelszo12)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": ["{{base_url}}"],
+							"path": ["api", "logout"]
+						},
+						"description": "Logout current user and invalidate token"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/profile",
+							"host": ["{{base_url}}"],
+							"path": ["api", "profile"]
+						},
+						"description": "Get authenticated user profile with task assignments"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User - My Tasks",
+			"item": [
+				{
+					"name": "Get My Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/my-tasks",
+							"host": ["{{base_url}}"],
+							"path": ["api", "my-tasks"]
+						},
+						"description": "Get all tasks assigned to authenticated user"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"in_progress\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tasks/1/status",
+							"host": ["{{base_url}}"],
+							"path": ["api", "tasks", "1", "status"]
+						},
+						"description": "Update task status. Values: pending, in_progress, completed, cancelled"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin - Users",
+			"item": [
+				{
+					"name": "List All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "users"]
+						},
+						"description": "Get paginated list of all users (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New User\",\n    \"email\": \"newuser@example.com\",\n    \"password\": \"password123\",\n    \"department\": \"Sales\",\n    \"phone\": \"+36 1 999 8888\",\n    \"is_admin\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/users",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "users"]
+						},
+						"description": "Create a new user (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "users", "1"]
+						},
+						"description": "Get specific user details (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Name\",\n    \"department\": \"Marketing\",\n    \"is_admin\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/2",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "users", "2"]
+						},
+						"description": "Update user details (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User (Soft)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/2",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "users", "2"]
+						},
+						"description": "Soft delete user (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Assignments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/2/assignments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "users", "2", "assignments"]
+						},
+						"description": "Get all task assignments for a specific user (Admin only)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin - Tasks",
+			"item": [
+				{
+					"name": "List All Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/tasks",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "tasks"]
+						},
+						"description": "Get paginated list of all tasks (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Task\",\n    \"description\": \"This is a new task description\",\n    \"priority\": \"high\",\n    \"due_date\": \"2026-03-15\",\n    \"status\": \"pending\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/tasks",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "tasks"]
+						},
+						"description": "Create a new task (Admin only). Priority: low/medium/high, Status: pending/in_progress/completed/cancelled"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/tasks/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "tasks", "1"]
+						},
+						"description": "Get specific task details (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Task Title\",\n    \"priority\": \"medium\",\n    \"status\": \"in_progress\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/tasks/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "tasks", "1"]
+						},
+						"description": "Update task details (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task (Soft)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/tasks/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "tasks", "1"]
+						},
+						"description": "Soft delete task (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task Assignments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/tasks/1/assignments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "tasks", "1", "assignments"]
+						},
+						"description": "Get all user assignments for a specific task (Admin only)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin - Assignments",
+			"item": [
+				{
+					"name": "List All Assignments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/assignments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "assignments"]
+						},
+						"description": "Get paginated list of all task assignments (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Assignment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 2,\n    \"task_id\": 1,\n    \"assigned_at\": \"2026-02-12T10:00:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/assignments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "assignments"]
+						},
+						"description": "Create a new task assignment (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Assignment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/assignments/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "assignments", "1"]
+						},
+						"description": "Get specific assignment details (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Assignment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"completed_at\": \"2026-02-12T15:00:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/assignments/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "assignments", "1"]
+						},
+						"description": "Update assignment details (Admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Assignment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/assignments/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "assignments", "1"]
+						},
+						"description": "Delete assignment (Admin only)"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
